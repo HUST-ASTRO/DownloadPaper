@@ -12,6 +12,7 @@ Download paper from this website.
 
 from urllib.request import urlretrieve
 from bs4 import BeautifulSoup
+from ArXiv_ import ArXiv
 import requests
 import re
 
@@ -40,7 +41,7 @@ class ADS:
 
     @staticmethod
     def _check_website(website):
-        assert 'http://adsabs.harvard.edu/abs/' in website, "%s is not the ADS website" % website
+        assert 'http://adsabs.harvard.edu/' in website, "%s is not the ADS website" % website
 
     def get_information(self, bsObj):
         tdList = bsObj.findAll("td", {"valign": "top", "align": "left"})
@@ -107,8 +108,9 @@ class ADS:
         if self.pdf is not None:
             urlretrieve(self.pdf, savePath)
             print("%s download in %s" % (filename, savePath))
-        # elif self.arXiv is not None:
-        #     ArXiv(self.arXiv)
+        elif self.arXiv is not None:
+            paper = ArXiv(self.arXiv)
+            paper.download_pdf(path)
         else:
             print("website don't have full refereed journal article.")
 
