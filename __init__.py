@@ -5,6 +5,8 @@
 # @File    : __init__.py
 # @Software: PyCharm
 
+from .ArXiv_ import ArXiv
 from .ADS_ import ADS
 
-__all__ = ['ADS']
+__all__ = ['ADS',
+           'ArXiv']
