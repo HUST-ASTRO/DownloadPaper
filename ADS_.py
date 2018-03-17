@@ -64,6 +64,7 @@ class ADS:
             else:
                 pass
 
+        # 若摘要存在上下标，收集的信息可能不全。
         self.abstract = bsObj.findAll("h3", {"align": "center"})[0].next.next
         
         aList = bsObj.findAll("a")
